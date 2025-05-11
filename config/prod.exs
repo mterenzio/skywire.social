@@ -18,3 +18,8 @@ config :logger, level: :info
 
 # Runtime production configuration, including reading
 # of environment variables, is done on config/runtime.exs.
+config :skywire, SkywireWeb.Endpoint,
+  http: [ip: {127, 0, 0, 1}, port: String.to_integer(System.get_env("PORT") || "4000")],
+  url: [host: "skywire.social", port: 443, scheme: "https"],
+  check_origin: ["https://skywire.social"],
+  server: true
